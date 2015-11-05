@@ -5,7 +5,7 @@ $(function() {
 });
 
 function originalColor() {
-    // importScripts('./randomColor.js');
+    importScripts(self.location.origin + "/randomColor.js");
     var centerX = 250,
         centerY = 250,
         circles = 140,
@@ -24,7 +24,7 @@ function originalColor() {
 
         circle = bonsai.Path
             .circle(x, y, radius)
-            .attr({fillColor: 'attractiveRandom'});
+            .attr({fillColor: randomColor()});
         circle.x = x;
         circle.y = y;
         stage.addChild(circle);
