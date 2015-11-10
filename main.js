@@ -15,7 +15,7 @@ function originalColor() {
         circlePadding = 5,
         diviation = 1,
         distanceBetweenRing = 40,
-        fps = 30, rps = 1,
+        rotateF = 1, colorMultiplier = 10, rpf = 0.02,
         radius = 10;
 
     var random = Math.random;
@@ -39,9 +39,9 @@ function originalColor() {
 
     var children = stage.children();
     var spread = 800;
-    var dalpha = rps * 2 * Math.PI / fps;
+    var dalpha = rpf * 2 * Math.PI;
     var sin_dalpha = Math.sin(dalpha), cos_dalpha = Math.cos(dalpha);
-    stage.length(fps);
+    stage.length(rotateF);
     stage.on(0, function() {
         console.log('123');
         for (var i = 0; i < children.length; i ++) {
@@ -49,14 +49,28 @@ function originalColor() {
             var newY = centerY + (children[i].x - centerX) * sin_dalpha + (children[i].y - centerY) * cos_dalpha;
             children[i].x = newX;
             children[i].y = newY;
-            children[i].animate(fps, {
+            children[i].animate(rotateF, {
                 x: children[i].x,
                 y: children[i].y,
+            }, {easing: 'linear', isTimelineBound: false});
+        }
+    });
+
+    var count = 0;
+    stage.on(0, function() {
+        if (count != 0) {
+            count --;
+            return;
+        }
+        count = colorMultiplier;
+        for (var i = 0; i < children.length; i ++) {
+            children[i].animate(rotateF * colorMultiplier, {
                 fillColor: randomColor()
             }, {easing: 'linear', isTimelineBound: false});
         }
     });
 
+    // TODO: crosshair instead
     var center = bonsai.Path
         .circle(centerX, centerY, 2)
         .attr({fillColor: 'white'});
