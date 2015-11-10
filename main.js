@@ -11,24 +11,30 @@ function originalColor() {
     stage.setBackgroundColor("#8B8B8B");
     var centerX = 250,
         centerY = 250,
-        circles = 20,
-        distance = 180,
+        numRing = 3,
+        circlePadding = 5,
+        diviation = 1,
+        distanceBetweenRing = 40,
         fps = 30, rps = 1,
-        radius = 15;
+        radius = 10;
 
-    var circle, random = Math.random;
+    var random = Math.random;
 
-    for (var i = 0; i < circles; ++i) {
-        var f = i / circles,
-            x = centerX + distance * Math.sin(f*2*Math.PI),
-            y = centerY + distance * -Math.cos(f*2*Math.PI),
+    for (var i = 1; i <= numRing; i ++) {
+        var distanceFromCenter = distanceBetweenRing * i;
+        var numCircle = Math.floor((2 * Math.PI * distanceFromCenter) / (radius * 2 + circlePadding * 2));
+        var radDiff =  2 * Math.PI / numCircle;
+        for (var j = 0; j < 2 * Math.PI; j += radDiff) {
+            var x = centerX + distanceFromCenter * Math.sin(j),
+                y = centerY + distanceFromCenter * -Math.cos(j);
 
-        circle = bonsai.Path
-            .circle(x, y, radius)
-            .attr({fillColor: randomColor()});
-        circle.x = x;
-        circle.y = y;
-        stage.addChild(circle);
+            var circle = bonsai.Path
+                .circle(x, y, radius)
+                .attr('fillColor', randomColor());
+            circle.x = x;
+            circle.y = y;
+            stage.addChild(circle);
+        }
     }
 
     var children = stage.children();
