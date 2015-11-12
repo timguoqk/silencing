@@ -2,14 +2,14 @@ function bonsaiMovie(data) {
     var dalpha, sin_dalpha, cos_dalpha;
     updateParameters();
 
-    importScripts(self.location.origin + "/randomColor.js");
-    stage.setBackgroundColor("#8B8B8B");
+    importScripts(self.location.origin + '/randomColor.js');
+    stage.setBackgroundColor('#8B8B8B');
     stage.length(1);
 
     var random = Math.random;
 
     for (var i = 1; i <= data.numRing; i ++) {
-        var distanceFromCenter = data.distanceBetweenRing * i;
+        var distanceFromCenter = data.firstDistance + data.distanceBetweenRing * i;
         var numCircle = Math.floor((2 * Math.PI * distanceFromCenter) / (data.radius * 2 + data.circlePadding * 2));
         var radDiff =  2 * Math.PI / numCircle;
         for (var j = 0; j < 2 * Math.PI; j += radDiff) {
@@ -26,12 +26,13 @@ function bonsaiMovie(data) {
     }
 
     var children = stage.children();
+    stage.sendMessage('numCircle', children.length);
+
     stage.on(0, function() {
         for (var i = 0; i < children.length; i ++) {
-            var newX = data.centerX + (children[i].x - data.centerX) * cos_dalpha - (children[i].y - data.centerY) * sin_dalpha;
-            var newY = data.centerY + (children[i].x - data.centerX) * sin_dalpha + (children[i].y - data.centerY) * cos_dalpha;
-            children[i].x = newX;
-            children[i].y = newY;
+            var newCoord = motionFunctions[data.motionFunction](children[i].x, children[i].y);
+            children[i].x = newCoord[0];
+            children[i].y = newCoord[1];
             children[i].animate(1, {
                 x: children[i].x,
                 y: children[i].y,
@@ -69,4 +70,21 @@ function bonsaiMovie(data) {
         data = d;
         updateParameters();
     });
+    stage.on('message:recenter', function() {
+
+    });
+
+
+    var motionFunctions = [
+        function(x, y) {
+            return [data.centerX + (x - data.centerX) * cos_dalpha - (y - data.centerY) * sin_dalpha,
+                data.centerY + (x - data.centerX) * sin_dalpha + (y - data.centerY) * cos_dalpha];
+        },
+        function(x, y) {
+            return [x + data.rpf * 200, y];
+        },
+        function(x, y) {
+            return [x, y + data.rpf * 200];
+        }
+    ];
 }
