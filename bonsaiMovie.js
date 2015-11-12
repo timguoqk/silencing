@@ -1,6 +1,10 @@
 function bonsaiMovie(data) {
+    var dalpha, sin_dalpha, cos_dalpha;
+    updateParameters();
+
     importScripts(self.location.origin + "/randomColor.js");
     stage.setBackgroundColor("#8B8B8B");
+    stage.length(1);
 
     var random = Math.random;
 
@@ -14,7 +18,7 @@ function bonsaiMovie(data) {
 
             var circle = bonsai.Path
                 .circle(x, y, data.radius)
-                .attr('fillColor', randomColor());
+                .attr('fillColor', randomColor(data.colorType));
             circle.x = x;
             circle.y = y;
             stage.addChild(circle);
@@ -22,17 +26,13 @@ function bonsaiMovie(data) {
     }
 
     var children = stage.children();
-    var dalpha = data.rpf * 2 * Math.PI;
-    var sin_dalpha = Math.sin(dalpha), cos_dalpha = Math.cos(dalpha);
-    stage.length(data.rotateF);
     stage.on(0, function() {
-        console.log('123');
         for (var i = 0; i < children.length; i ++) {
             var newX = data.centerX + (children[i].x - data.centerX) * cos_dalpha - (children[i].y - data.centerY) * sin_dalpha;
             var newY = data.centerY + (children[i].x - data.centerX) * sin_dalpha + (children[i].y - data.centerY) * cos_dalpha;
             children[i].x = newX;
             children[i].y = newY;
-            children[i].animate(data.rotateF, {
+            children[i].animate(1, {
                 x: children[i].x,
                 y: children[i].y,
             }, {easing: 'linear', isTimelineBound: false});
@@ -47,8 +47,8 @@ function bonsaiMovie(data) {
         }
         count = data.colorMultiplier;
         for (var i = 0; i < children.length; i ++) {
-            children[i].animate(data.rotateF * data.colorMultiplier, {
-                fillColor: randomColor()
+            children[i].animate(data.colorMultiplier, {
+                fillColor: randomColor(data.colorType)
             }, {easing: 'linear', isTimelineBound: false});
         }
     });
@@ -58,4 +58,15 @@ function bonsaiMovie(data) {
         .circle(data.centerX, data.centerY, 2)
         .attr({fillColor: 'white'});
     stage.addChild(center);
+
+    function updateParameters() {
+        dalpha = data.rpf * 2 * Math.PI;
+        sin_dalpha = Math.sin(dalpha);
+        cos_dalpha = Math.cos(dalpha);
+    }
+
+    stage.on('message:update', function(d) {
+        data = d;
+        updateParameters();
+    });
 }
