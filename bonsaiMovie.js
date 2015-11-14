@@ -54,11 +54,12 @@ function bonsaiMovie(data) {
         }
     });
 
-    // TODO: crosshair instead
-    var center = bonsai.Path
-        .circle(data.centerX, data.centerY, 2)
-        .attr({fillColor: 'white'});
-    stage.addChild(center);
+    stage.addChild(bonsai.Path
+        .rect(data.centerX, data.centerY - 3, 1, 7)
+        .attr({fillColor: 'white'}));
+    stage.addChild(bonsai.Path
+        .rect(data.centerX - 3, data.centerY, 7, 1)
+        .attr({fillColor: 'white'}));
 
     function updateParameters() {
         dalpha = data.rpf * 2 * Math.PI;

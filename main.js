@@ -6,7 +6,7 @@ var schemas = {
         circlePadding: 5,
         firstDistance: 60,
         distanceBetweenRing: 40,
-        colorMultiplier: 30,
+        colorMultiplier: 25,
         rpf: 0.01,
         radius: 10,
         colorType: {},
@@ -93,6 +93,10 @@ $(function() {
     });
     $('#mobile-button').on('click', function() {
         currentSchema = $.extend({}, schemas.mobile);
+        restart();
+    });
+    $('#default-button').on('click', function() {
+        currentSchema = $.extend({}, schemas.original);
         restart();
     });
 });
