@@ -13,61 +13,104 @@
 	<script src="main.js"></script>
 </head>
 <body>
-	<div class="ui attached stackable menu">
+	<div class="ui attached stackable menu" id="top-bar">
 		<div class="ui container">
 			<div class="item"><h1>Silencing</h1></div>
 		</div>
 	</div>
-	<div class="ui stackable grid container">
+	<div class="ui centered stackable divided grid">
 		<div class="row">
-			<div class="nine wide column" id="main-container"></div>
-			<div class="seven wide column" id="control-container">
-				<div class="ui form">
-					<div class="field">
-						<label>RandomColor Parameter</label>
-						<input type="text" name="randomColor" placeholder="{}">
+			<div class="eight wide column">
+				<div class="ui centered grid">
+					<div class="row">
+						<div id="main-container"></div></div>
+					<div class="row">
+						<div class="ui large yellow label" id="num-circle-label">
+							<i class="circle icon"></i>
+							Number of circles
+							<div class="detail"></div>
+						</div>
+						<div class="ui large blue label" id="speed-label">
+							<i class="road icon"></i>
+							Speed
+							<div class="detail">0.010</div>
+						</div>
 					</div>
-					<div class="field">
-						<label>Color change slowdown</label>
-						<input type="number" name="colorMultiplier" placeholder="25">
+				</div>
+			</div>
+			<div class="six wide column ui segments" id="control-container">
+				<div class="ui top attached header">Colors</div>
+				<div class="ui form segment">
+					<div class="two fields">
+						<div class="field">
+							<label>RandomColor Parameter</label>
+							<input type="text" name="randomColor" placeholder="{}">
+						</div>
+						<div class="field">
+							<label>Color change slowdown</label>
+							<input type="number" name="colorMultiplier" placeholder="25">
+						</div>	
 					</div>
 					<div class="ui teal button" id="apply-normal-form-button">Apply</div>
 				</div>
-				<div class="ui form">
-					<div class="field">
-						<label>Number of rings</label>
-						<input type="number" name="numRing" placeholder="3">
+				<div class="ui top attached header">Shapes</div>
+				<div class="ui form segment">
+					<div class="two fields">
+						<div class="field">
+							<label>Number of rings</label>
+							<input type="number" name="numRing" placeholder="3">
+						</div>
+						<div class="field">
+							<label>Distance between circles</label>
+							<input type="number" name="circlePadding" placeholder="5">
+						</div>
 					</div>
-					<div class="field">
-						<label>Distance between circles</label>
-						<input type="number" name="circlePadding" placeholder="5">
-					</div>
-					<div class="field">
-						<label>Distance between rings</label>
-						<input type="number" name="distanceBetweenRing" placeholder="40">
-					</div>
-					<div class="field">
-						<label>Radius of circle</label>
-						<input type="number" name="radius" placeholder="10">
+					<div class="two fields">
+						<div class="field">
+							<label>Distance between rings</label>
+							<input type="number" name="distanceBetweenRing" placeholder="40">
+						</div>
+						<div class="field">
+							<label>Radius of circle</label>
+							<input type="number" name="radius" placeholder="10">
+						</div>
 					</div>
 					<div class="ui teal button" id="apply-special-form-button">Apply</div>
 				</div>
-				<div class="ui large yellow label" id="num-circle-label">
-					<i class="circle icon"></i>
-					Number of circles
-					<div class="detail"></div>
+				<div class="ui top attached header">Speed</div>
+				<div class="ui segment">
+					<div class="ui buttons">
+						<div class="ui blue labeled icon button" id="move-fast-button">
+							<i class="icon plus"></i>
+							Move faster
+						</div>
+						<div class="or"></div>
+						<div class="ui yellow labeled icon button" id="move-slow-button">
+							<i class="icon minus"></i>
+							Move slower
+						</div>
+						<div class="or"></div>
+						<div class="ui red labeled icon button" id="move-stop-button">
+							<i class="icon stop"></i>
+							Stop motion
+						</div>
+					</div>
+				</div>	
+				<div class="ui top attached header">Control</div>
+				<div class="ui segment">
+					<div class="ui labeled icon button" id="restart-button">
+						<i class="icon video play"></i>
+						Restart
+					</div>
+					<div class="ui labeled icon button" id="mobile-button">
+						<i class="icon mobile"></i>
+						Use mobile preset
+					</div>
+					<div class="ui labeled icon button" id="default-button">
+						<i class="icon desktop"></i>
+						Use default preset
+					</div>
 				</div>
-				<div class="ui large blue label" id="speed-label">
-					<i class="road icon"></i>
-					Speed
-					<div class="detail">0.010</div>
-				</div>
-				<div class="ui teal button" id="move-fast-button">Move faster</div>
-				<div class="ui teal button" id="move-slow-button">Move slower</div>
-				<div class="ui teal button" id="move-stop-button">Stop motion</div>
-				<div class="ui teal button" id="restart-button">Restart</div>
-				<div class="ui teal button" id="mobile-button">Use mobile preset</div>
-				<div class="ui teal button" id="default-button">Use default preset</div>
 			</div>
 		</div>
 	</div>
