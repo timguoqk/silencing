@@ -6,8 +6,8 @@ var schemas = {
         circlePadding: 5,
         firstDistance: 60,
         distanceBetweenRing: 40,
-        colorMultiplier: 25,
-        rpf: 0.01,
+        colorMultiplier: 30,
+        rpf: 0,
         radius: 10,
         colorType: {},
         motionFunction: 0
@@ -20,7 +20,7 @@ var schemas = {
         firstDistance: 60,
         distanceBetweenRing: 40,
         colorMultiplier: 30,
-        rpf: 0.01,
+        rpf: 0,
         radius: 5,
         colorType: {hue: 'blue'},
         motionFunction: 0
@@ -57,11 +57,11 @@ $(function() {
     }
 
     $('#move-fast-button').on('click', function() {
-        currentSchema.rpf += 0.005;
+        currentSchema.rpf += 0.01;
         updateSchema();
     });
     $('#move-slow-button').on('click', function() {
-        currentSchema.rpf -= 0.005;
+        currentSchema.rpf -= 0.01;
         updateSchema();
     });
     $('#move-stop-button').on('click', function() {
