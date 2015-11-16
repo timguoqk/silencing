@@ -15,16 +15,16 @@ var schemas = {
     mobile: {
         centerX: 250,
         centerY: 250,
-        numRing: 2,
-        circlePadding: 30,
+        numRing: 3,
+        circlePadding: 5,
         firstDistance: 60,
         distanceBetweenRing: 40,
         colorMultiplier: 30,
         rpf: 0,
-        radius: 5,
-        colorType: {hue: 'blue'},
+        radius: 10,
+        colorType: {},
         motionFunction: 0
-    }
+    } // TODO: real mobile preset
 };
 
 $(function() {
@@ -36,6 +36,9 @@ $(function() {
         code: run,
         data: currentSchema
     });
+    movie.on('message:numCircle', function(d) {
+        $('#num-circle-label .detail').text(d);
+    });
     function restart() {
         movie.destroy();
         movie = bonsai.run(document.getElementById('main-container'), {
@@ -44,12 +47,11 @@ $(function() {
             code: run,
             data: currentSchema
         });
+        movie.on('message:numCircle', function(d) {
+            $('#num-circle-label .detail').text(d);
+        });
         updateSchema();
     }
-
-    movie.on('message:numCircle', function(d) {
-        $('#num-circle-label .detail').text(d);
-    });
 
     function updateSchema() {
         movie.sendMessage('update', currentSchema);
@@ -66,6 +68,18 @@ $(function() {
     });
     $('#move-stop-button').on('click', function() {
         currentSchema.rpf = 0;
+        updateSchema();
+    });
+    $('#rotation-button').on('click', function() {
+        currentSchema.motionFunction = 0;
+        $('#rotation-button').addClass('active');
+        $('#translation-button').removeClass('active');
+        updateSchema();
+    });
+    $('#translation-button').on('click', function() {
+        currentSchema.motionFunction = 1;
+        $('#rotation-button').removeClass('active');
+        $('#translation-button').addClass('active');
         updateSchema();
     });
     $('#restart-button').on('click', function() {

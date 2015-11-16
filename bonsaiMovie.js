@@ -82,7 +82,9 @@ function bonsaiMovie(data) {
                 data.centerY + (x - data.centerX) * sin_dalpha + (y - data.centerY) * cos_dalpha];
         },
         function(x, y) {
-            return [x + data.rpf * 200, y];
+            var spread = 700 * data.rpf;
+            return [x + spread * random() - spread / 2,
+                y + spread * random() - spread / 2];
         },
         function(x, y) {
             return [x, y + data.rpf * 200];
