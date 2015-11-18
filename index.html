@@ -4,10 +4,10 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-	<script async src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.min.css">
 
-	<script async src="https://cdnjs.cloudflare.com/ajax/libs/bonsai/0.4.5/bonsai.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bonsai/0.4.5/bonsai.min.js"></script>
 	<link rel="stylesheet" href="main.css">
 	<script src="main.js"></script>
 </head>
@@ -86,47 +86,61 @@
 				</div>
 				<div class="ui top attached header">Speed</div>
 				<div class="ui segment">
-					<div class="ui buttons">
-						<div class="ui blue labeled icon button" id="move-fast-button">
-							<i class="icon plus"></i>
-							Move faster
-						</div>
-						<div class="ui yellow labeled icon button" id="move-slow-button">
-							<i class="icon minus"></i>
-							Move slower
-						</div>
-						<div class="ui red labeled icon button" id="move-stop-button">
-							<i class="icon stop"></i>
-							Stop motion
-						</div>
-					</div>
-					<div class="ui horizontal divider"></div>
 					<div class="ui centered grid">
 						<div class="ui buttons">
-						<div class="ui active teal button" id="rotation-button">Rotation</div>
-						<div class="or"></div>
-						<div class="ui teal button" id="translation-button">Vibration</div>
+							<div class="ui teal labeled icon button" id="move-pos-one-button">
+								<i class="icon plus"></i>
+								+0.015
+							</div>
+							<div class="ui teal labeled icon button" id="move-neg-one-button">
+								<i class="icon minus"></i>
+								-0.015
+							</div>
 						</div>
+						<div class="ui horizontal divider"></div>
+						<div class="ui buttons">
+							<div class="ui blue labeled icon button" id="move-fast-button">
+								<i class="icon plus"></i>
+								Move faster
+							</div>
+							<div class="ui yellow labeled icon button" id="move-slow-button">
+								<i class="icon minus"></i>
+								Move slower
+							</div>
+							<div class="ui red labeled icon button" id="move-stop-button">
+								<i class="icon stop"></i>
+								Stop motion
+							</div>
+						</div>
+						<div class="ui horizontal divider"></div>
+						<div class="ui buttons">
+							<div class="ui active teal button" id="rotation-button">Rotation</div>
+							<div class="or"></div>
+							<div class="ui teal button" id="translation-button">Vibration</div>
+						</div>
+						<div class="ui horizontal divider"></div>
 					</div>
-					<div class="ui horizontal divider"></div>
 				</div>	
 				<div class="ui top attached header">Control</div>
 				<div class="ui segment">
-					<div class="ui buttons">
-						<div class="ui labeled icon button" id="mobile-button">
-							<i class="icon mobile"></i>
-							Use mobile preset
+					<div class="ui centered grid">
+						<div class="ui buttons">
+							<div class="ui labeled icon button" id="mobile-button">
+								<i class="icon mobile"></i>
+								Use mobile preset
+							</div>
+							<div class="or"></div>
+							<div class="ui labeled icon button" id="default-button">
+								<i class="icon desktop"></i>
+								Use default preset
+							</div>
 						</div>
-						<div class="or"></div>
-						<div class="ui labeled icon button" id="default-button">
-							<i class="icon desktop"></i>
-							Use default preset
+						<div class="ui divider"></div>
+						<div class="ui labeled icon button" id="restart-button">
+							<i class="icon video play"></i>
+							Restart
 						</div>
-					</div>
-					<div class="ui divider"></div>
-					<div class="ui labeled icon button" id="restart-button">
-						<i class="icon video play"></i>
-						Restart
+						<div class="ui horizontal divider"></div>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,11 @@
 $(function() {
     var schemas = {
         original: {
-            centerX: ($('#main-container').width() - 30) / 2,
-            centerY: ($('#main-container').width() - 30) / 2,
+            centerX: ($('#main-container').width() - 150) / 2,
+            centerY: ($('#main-container').width() - 150) / 2,
             numRing: 3,
             circlePadding: 5,
-            firstDistance: 60,
+            firstDistance: 80,
             distanceBetweenRing: 40,
             colorMultiplier: 30,
             rpf: 0,
@@ -14,25 +14,25 @@ $(function() {
             motionFunction: 0
         },
         mobile: {
-            centerX: ($('#main-container').width() - 30) / 2,
-            centerY: ($('#main-container').width() - 30) / 2,
+            centerX: ($('#main-container').width() - 150) / 2,
+            centerY: ($('#main-container').width() - 150) / 2,
             numRing: 3,
             circlePadding: 5,
-            firstDistance: 60,
+            firstDistance: 80,
             distanceBetweenRing: 40,
             colorMultiplier: 30,
             rpf: 0,
             radius: 10,
             colorType: {},
             motionFunction: 0
-        } // TODO: real mobile preset
+        }
     };
     var currentSchema = $.extend({}, schemas.original), movie;
     
 
     movie = bonsai.run(document.getElementById('main-container'), {
-        width: $('#main-container').width() - 30,
-        height: $('#main-container').width() - 30,
+        width: $('#main-container').width() - 150,
+        height: $('#main-container').width() - 150,
         code: run,
         data: currentSchema
     });
@@ -42,8 +42,8 @@ $(function() {
     function restart() {
         movie.destroy();
         movie = bonsai.run(document.getElementById('main-container'), {
-            width: $('#main-container').width() - 30,
-            height: $('#main-container').width() - 30,
+            width: $('#main-container').width() - 150,
+            height: $('#main-container').width() - 150,
             code: run,
             data: currentSchema
         });
@@ -58,12 +58,20 @@ $(function() {
         $('#speed-label .detail').text(currentSchema.rpf.toFixed(3));
     }
 
+    $('#move-pos-one-button').on('click', function() {
+        currentSchema.rpf = 0.015;
+        updateSchema();
+    });
+    $('#move-neg-one-button').on('click', function() {
+        currentSchema.rpf = -0.015;
+        updateSchema();
+    });
     $('#move-fast-button').on('click', function() {
-        currentSchema.rpf += 0.01;
+        currentSchema.rpf += 0.005;
         updateSchema();
     });
     $('#move-slow-button').on('click', function() {
-        currentSchema.rpf -= 0.01;
+        currentSchema.rpf -= 0.005;
         updateSchema();
     });
     $('#move-stop-button').on('click', function() {
