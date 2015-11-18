@@ -124,6 +124,10 @@ $(function() {
 });
 
 function run() {
-    importScripts(self.location.origin + '/bonsaiMovie.js');
+    try {
+        importScripts(self.location.origin + '/bonsaiMovie.js');
+    } catch(e) {
+        importScripts('http://silencing.timguoqk.me/bonsaiMovie.js');
+    }
     bonsaiMovie(stage.options.data);
 }

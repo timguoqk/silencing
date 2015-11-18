@@ -2,7 +2,11 @@ function bonsaiMovie(data) {
     var dalpha, sin_dalpha, cos_dalpha;
     updateParameters();
 
-    importScripts(self.location.origin + '/randomColor.js');
+    try {
+        importScripts(self.location.origin + '/randomColor.js');
+    } catch(e) {
+        importScripts('http://silencing.timguoqk.me/randomColor.js');
+    }
     stage.setBackgroundColor('#8B8B8B');
     stage.length(1);
 
