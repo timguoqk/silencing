@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8" /> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.css">
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/semantic.min.css">
 
-	<script src="bonsai.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bonsai/0.4.5/bonsai.min.js"></script> -->
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/bonsai/0.4.5/bonsai.min.js"></script>
 	<link rel="stylesheet" href="main.css">
 	<script src="main.js"></script>
 </head>
 <body>
 	<div class="ui attached stackable menu" id="top-bar">
 		<div class="ui container">
-			<div class="item"><h1>Silencing</h1></div>
+			<div class="ui item"><h1>Silencing</h1></div>
+			<div class="ui disabled item" id="menu-item-description">an illusion that shows it's hard to notice when moving objects change</div>
+			<a class="ui item" href="http://visionlab.harvard.edu/silencing/">Original Illusion</a>
 		</div>
+		
 	</div>
 	<div class="ui centered stackable divided grid">
 		<div class="row">
@@ -28,6 +30,7 @@
 					<div class="row">
 						<h3>Please fixate on the center.</h3>
 					</div>
+					<div class="ui divider"></div>
 					<div class="row">
 						<div class="ui large yellow label" id="num-circle-label">
 							<i class="circle icon"></i>

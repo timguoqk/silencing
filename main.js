@@ -1,38 +1,38 @@
-var schemas = {
-    original: {
-        centerX: 250,
-        centerY: 250,
-        numRing: 3,
-        circlePadding: 5,
-        firstDistance: 60,
-        distanceBetweenRing: 40,
-        colorMultiplier: 30,
-        rpf: 0,
-        radius: 10,
-        colorType: {},
-        motionFunction: 0
-    },
-    mobile: {
-        centerX: 250,
-        centerY: 250,
-        numRing: 3,
-        circlePadding: 5,
-        firstDistance: 60,
-        distanceBetweenRing: 40,
-        colorMultiplier: 30,
-        rpf: 0,
-        radius: 10,
-        colorType: {},
-        motionFunction: 0
-    } // TODO: real mobile preset
-};
-
 $(function() {
+    var schemas = {
+        original: {
+            centerX: ($('#main-container').width() - 30) / 2,
+            centerY: ($('#main-container').width() - 30) / 2,
+            numRing: 3,
+            circlePadding: 5,
+            firstDistance: 60,
+            distanceBetweenRing: 40,
+            colorMultiplier: 30,
+            rpf: 0,
+            radius: 10,
+            colorType: {},
+            motionFunction: 0
+        },
+        mobile: {
+            centerX: ($('#main-container').width() - 30) / 2,
+            centerY: ($('#main-container').width() - 30) / 2,
+            numRing: 3,
+            circlePadding: 5,
+            firstDistance: 60,
+            distanceBetweenRing: 40,
+            colorMultiplier: 30,
+            rpf: 0,
+            radius: 10,
+            colorType: {},
+            motionFunction: 0
+        } // TODO: real mobile preset
+    };
     var currentSchema = $.extend({}, schemas.original), movie;
     
+
     movie = bonsai.run(document.getElementById('main-container'), {
-        width: 500, // TODO: make it responsive
-        height: 500,
+        width: $('#main-container').width() - 30,
+        height: $('#main-container').width() - 30,
         code: run,
         data: currentSchema
     });
@@ -42,8 +42,8 @@ $(function() {
     function restart() {
         movie.destroy();
         movie = bonsai.run(document.getElementById('main-container'), {
-            width: 500, // TODO: make it responsive
-            height: 500,
+            width: $('#main-container').width() - 30,
+            height: $('#main-container').width() - 30,
             code: run,
             data: currentSchema
         });
